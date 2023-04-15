@@ -33,12 +33,45 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  var answers = List<Map<String, dynamic>>.generate(
+      101, (counter) => {'text': '', 'value': 0});
   int index = 1;
   bool noQuestion = false;
+
   void whatToDo(int value) {
     setState(() => index = value);
     print('Should receive the Value from myCallback');
     print(value);
+  }
+
+  void answerLayout(int index, int value) {
+    // setState(() => index = value);
+
+    setState(() {
+      String text = '';
+      switch (value) {
+        case 1:
+          text = 'A';
+          break;
+        case 2:
+          text = 'B';
+          break;
+        case 3:
+          text = 'C';
+          break;
+        case 4:
+          text = 'D';
+          break;
+        case 5:
+          text = 'E';
+          break;
+        default:
+          break;
+      }
+
+      print('Soal nomor: $index\nJawaban: $text\nValue: $value');
+      answers[index] = {'text': text, 'value': value};
+    });
   }
 
   @override
@@ -54,10 +87,7 @@ class _MyHomePageState extends State<MyHomePage> {
     }
 
     return Scaffold(
-      // appBar: AppBar(
-      //   title: Text(title),
-      //   centerTitle: true,
-      // ),
+      backgroundColor: Colors.grey,
       body: Row(
         children: [
           Expanded(
@@ -68,6 +98,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 color: Colors.amber[50],
                 child: AnswersLayout(
                   myCallback: whatToDo,
+                  data: answers,
                 ),
               ),
             ),
@@ -79,8 +110,11 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Container(
                 color: Colors.amber[100],
                 child: noQuestion
-                    ? QuestionEmpty()
-                    : QuestionLayout(index: index, question: q.single),
+                    ? const QuestionEmpty()
+                    : QuestionLayout(
+                        index: index,
+                        question: q.single,
+                        myCallback: answerLayout),
               ),
             ),
           ),
