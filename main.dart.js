@@ -62835,8 +62835,7 @@ p=q.gpI(q)
 A.adc()
 return new A.EQ(1/q.gpI(q),1/(0.05*p))})
 s($,"aqo","afm",()=>A.aeU(0.78)/A.aeU(0.9))
-s($,"atY","aha",()=>{var q="Geografi"
-return A.a([A.aci("c",q,2,0,"Obsequent","Superimposed","Consequent longitudinal","Subsequent","Consequent lateral","Sungai yang alirannya sejajar dengan arah antiklinal dinamakan sungai"),A.aci("d",q,2,1,"Siklus","Dataran banjir","Bantaran","Daerah aliran","Alur","Bagian permukaan bumi yang airnya mengalir ke dalam suatu sungai induk apabila terjadi hujan disebut .... sungai.")],A.Z("v<nG>"))})})();(function nativeSupport(){!function(){var s=function(a){var m={}
+s($,"atY","aha",()=>A.a([A.aci("c","GeografiX",2,0,"Obsequent","Superimposed","Consequent longitudinal","Subsequent","Consequent lateral","Sungai yang alirannya sejajar dengan arah antiklinal dinamakan sungai"),A.aci("d","Geografi",2,1,"Siklus","Dataran banjir","Bantaran","Daerah aliran","Alur","Bagian permukaan bumi yang airnya mengalir ke dalam suatu sungai induk apabila terjadi hujan disebut .... sungai.")],A.Z("v<nG>")))})();(function nativeSupport(){!function(){var s=function(a){var m={}
 m[a]=1
 return Object.keys(hunkHelpers.convertToFastObject(m))[0]}
 v.getIsolateTag=function(a){return s("___dart_"+a+v.isolateTag)}
