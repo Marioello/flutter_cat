@@ -28,7 +28,7 @@ final questionList = [
   Question(
     index: 0,
     categoryId: 2,
-    category: 'Geografi',
+    category: 'GeografiX',
     text:
         'Sungai yang alirannya sejajar dengan arah antiklinal dinamakan sungai',
     opt1: 'Obsequent',
