@@ -2,6 +2,7 @@ class Question {
   int index;
   int categoryId;
   String category;
+  String subCategory;
   String text;
   String opt1;
   String opt2;
@@ -14,6 +15,7 @@ class Question {
     required this.index,
     required this.categoryId,
     required this.category,
+    required this.subCategory,
     required this.text,
     required this.opt1,
     required this.opt2,
@@ -29,6 +31,7 @@ final questionList = [
     index: 0,
     categoryId: 2,
     category: 'GeografiX',
+    subCategory: '',
     text:
         'Sungai yang alirannya sejajar dengan arah antiklinal dinamakan sungai',
     opt1: 'Obsequent',
@@ -42,6 +45,7 @@ final questionList = [
     index: 1,
     categoryId: 2,
     category: 'Geografi',
+    subCategory: '',
     text:
         'Bagian permukaan bumi yang airnya mengalir ke dalam suatu sungai induk apabila terjadi hujan disebut .... sungai.',
     opt1: 'Siklus',
