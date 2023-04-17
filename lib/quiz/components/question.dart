@@ -21,6 +21,8 @@ class _QuestionWidgetState extends State<QuestionWidget> {
   @override
   Widget build(BuildContext context) {
     double fontSize = 20.0;
+
+    ///
     return Scaffold(
       appBar: AppBar(
         title: Row(
@@ -124,11 +126,11 @@ class _QuestionWidgetState extends State<QuestionWidget> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        answerButton('A', 1, widget.index),
-                        answerButton('B', 2, widget.index),
-                        answerButton('C', 3, widget.index),
-                        answerButton('D', 4, widget.index),
-                        answerButton('E', 5, widget.index),
+                        ansButton('A', 1, widget.index),
+                        ansButton('B', 2, widget.index),
+                        ansButton('C', 3, widget.index),
+                        ansButton('D', 4, widget.index),
+                        ansButton('E', 5, widget.index),
                       ],
                     ),
                   ),
@@ -141,7 +143,7 @@ class _QuestionWidgetState extends State<QuestionWidget> {
     );
   }
 
-  ElevatedButton answerButton(String name, int value, int index) {
+  ElevatedButton ansButton(String name, int value, int index) {
     Color color = Colors.grey.shade100;
 
     ///

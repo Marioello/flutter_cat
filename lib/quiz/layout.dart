@@ -19,8 +19,6 @@ class _QuizLayoutState extends State<QuizLayout> {
 
   void onTapAnswerFunction(int value) {
     setState(() => index = value);
-    print('Should receive the Value from myCallback');
-    print(value);
   }
 
   void onPressedBtnAnswerFunction(int index, int value) {
@@ -47,8 +45,6 @@ class _QuizLayoutState extends State<QuizLayout> {
       }
       answers[index] = {'text': text, 'value': value};
     });
-
-    print('Soal nomor: $index\nJawaban: $text\nValue: $value');
   }
 
   @override
@@ -61,8 +57,6 @@ class _QuizLayoutState extends State<QuizLayout> {
     }
 
     ///
-    print(q.isEmpty);
-
     return Scaffold(
       backgroundColor: Colors.grey,
       body: Row(

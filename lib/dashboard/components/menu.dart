@@ -20,7 +20,6 @@ class MenuLayout extends StatelessWidget {
           ///
           return ListTile(
             onTap: () => selectedId(id),
-            // leading: icon,
             title: Text(
               '$text',
               style: const TextStyle(fontSize: 20.0),
