@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class AnswersLayout extends StatelessWidget {
-  const AnswersLayout({Key? key, required this.myCallback, required this.data})
+class AnswersWidget extends StatelessWidget {
+  const AnswersWidget({Key? key, required this.onTapAnswer, required this.data})
       : super(key: key);
 
-  final void Function(int) myCallback;
+  final void Function(int) onTapAnswer;
   final List<Map<String, dynamic>> data;
 
   @override
@@ -28,7 +28,7 @@ class AnswersLayout extends StatelessWidget {
           );
 
           return ListTile(
-            onTap: () => myCallback(i),
+            onTap: () => onTapAnswer(i),
             leading: icon,
             title: Text(
               '$i. $text',

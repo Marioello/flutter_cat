@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_cat/constants.dart';
 import 'package:flutter_cat/dashboard/components/menu.dart';
 
-class Dashboard extends StatefulWidget {
-  const Dashboard({super.key});
+class DashboardLayout extends StatefulWidget {
+  const DashboardLayout({super.key});
 
   @override
-  State<Dashboard> createState() => _DashboardState();
+  State<DashboardLayout> createState() => _DashboardLayoutState();
 }
 
-class _DashboardState extends State<Dashboard> {
+class _DashboardLayoutState extends State<DashboardLayout> {
   int selectedPageId = 1;
 
   void selectedRouteId(int value) {
@@ -18,8 +18,6 @@ class _DashboardState extends State<Dashboard> {
 
   @override
   Widget build(BuildContext context) {
-    int defaultFlex = 100 / 100 as int;
-
     // Validate if page exists
     if (!pageList.asMap().containsKey(selectedPageId)) {
       setState(() => selectedPageId = 0);

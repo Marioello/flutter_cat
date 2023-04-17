@@ -6,14 +6,6 @@ class Wrapper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // int pageIndex = 0;
-    // switch (pageIndex) {
-    //   case 1:
-    //     return const QuizMainPage(title: 'Master CAT');
-    //   default:
-    //     return const Dashboard();
-    // }
-
-    return const Dashboard();
+    return const DashboardLayout();
   }
 }

@@ -1,18 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_cat/data/question.dart';
 
-class QuestionLayout extends StatelessWidget {
-  const QuestionLayout(
+class QuestionWidget extends StatefulWidget {
+  const QuestionWidget(
       {Key? key,
       required this.index,
       required this.question,
-      required this.myCallback})
+      required this.onPressedBtnAnswer})
       : super(key: key);
 
   final int index;
   final Question question;
-  final void Function(int, int) myCallback;
+  final void Function(int, int) onPressedBtnAnswer;
 
+  @override
+  State<QuestionWidget> createState() => _QuestionWidgetState();
+}
+
+class _QuestionWidgetState extends State<QuestionWidget> {
   @override
   Widget build(BuildContext context) {
     double fontSize = 20.0;
@@ -21,7 +26,7 @@ class QuestionLayout extends StatelessWidget {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text('$index. ${question.category}'),
+            Text('${widget.index}. ${widget.question.category}'),
             const Text('Timer'),
           ],
         ),
@@ -45,7 +50,7 @@ class QuestionLayout extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: Text(
-                      question.text,
+                      widget.question.text,
                       style: TextStyle(fontSize: fontSize),
                     ),
                   ),
@@ -75,15 +80,15 @@ class QuestionLayout extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'A. ${question.opt1}',
+                              'A. ${widget.question.opt1}',
                               style: TextStyle(fontSize: fontSize),
                             ),
                             Text(
-                              'B. ${question.opt2}',
+                              'B. ${widget.question.opt2}',
                               style: TextStyle(fontSize: fontSize),
                             ),
                             Text(
-                              'C. ${question.opt3}',
+                              'C. ${widget.question.opt3}',
                               style: TextStyle(fontSize: fontSize),
                             ),
                           ],
@@ -93,11 +98,11 @@ class QuestionLayout extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'D. ${question.opt4}',
+                              'D. ${widget.question.opt4}',
                               style: TextStyle(fontSize: fontSize),
                             ),
                             Text(
-                              'E. ${question.opt5}',
+                              'E. ${widget.question.opt5}',
                               style: TextStyle(fontSize: fontSize),
                             ),
                           ],
@@ -119,11 +124,11 @@ class QuestionLayout extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        answerButton('A', 1, index),
-                        answerButton('B', 2, index),
-                        answerButton('C', 3, index),
-                        answerButton('D', 4, index),
-                        answerButton('E', 5, index),
+                        answerButton('A', 1, widget.index),
+                        answerButton('B', 2, widget.index),
+                        answerButton('C', 3, widget.index),
+                        answerButton('D', 4, widget.index),
+                        answerButton('E', 5, widget.index),
                       ],
                     ),
                   ),
@@ -162,7 +167,7 @@ class QuestionLayout extends StatelessWidget {
 
     ///
     return ElevatedButton(
-      onPressed: () => myCallback(index, value),
+      onPressed: () => widget.onPressedBtnAnswer(index, value),
       style: ElevatedButton.styleFrom(backgroundColor: color),
       child: Text(
         name,

@@ -1,34 +1,31 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_cat/quiz/answers.dart';
+import 'package:flutter_cat/constants.dart';
+import 'package:flutter_cat/quiz/components/answers.dart';
 import 'package:flutter_cat/data/question.dart';
-import 'package:flutter_cat/quiz/layout_question.dart';
+import 'package:flutter_cat/quiz/components/question.dart';
 import 'package:flutter_cat/shared/question_empty.dart';
 
-class QuizMainPage extends StatefulWidget {
+class QuizLayout extends StatefulWidget {
+  const QuizLayout({Key? key, required this.title}) : super(key: key);
   final String title;
-  const QuizMainPage({Key? key, required this.title}) : super(key: key);
 
   @override
-  State<QuizMainPage> createState() => _QuizMainPageState();
+  State<QuizLayout> createState() => _QuizLayoutState();
 }
 
-class _QuizMainPageState extends State<QuizMainPage> {
-  var answers = List<Map<String, dynamic>>.generate(
-      101, (counter) => {'text': '', 'value': 0});
+class _QuizLayoutState extends State<QuizLayout> {
   int index = 1;
   bool noQuestion = false;
 
-  void whatToDo(int value) {
+  void onTapAnswerFunction(int value) {
     setState(() => index = value);
     print('Should receive the Value from myCallback');
     print(value);
   }
 
-  void answerLayout(int index, int value) {
-    // setState(() => index = value);
-
+  void onPressedBtnAnswerFunction(int index, int value) {
+    String text = '';
     setState(() {
-      String text = '';
       switch (value) {
         case 1:
           text = 'A';
@@ -48,23 +45,23 @@ class _QuizMainPageState extends State<QuizMainPage> {
         default:
           break;
       }
-
-      print('Soal nomor: $index\nJawaban: $text\nValue: $value');
       answers[index] = {'text': text, 'value': value};
     });
+
+    print('Soal nomor: $index\nJawaban: $text\nValue: $value');
   }
 
   @override
   Widget build(BuildContext context) {
-    int defaultFlex = 100 / 100 as int;
-
     final q = questionList.where((w) => w.index == index - 1);
-    print(q.isEmpty);
     if (q.isEmpty) {
       setState(() => noQuestion = true);
     } else {
       setState(() => noQuestion = false);
     }
+
+    ///
+    print(q.isEmpty);
 
     return Scaffold(
       backgroundColor: Colors.grey,
@@ -76,8 +73,8 @@ class _QuizMainPageState extends State<QuizMainPage> {
               padding: const EdgeInsets.fromLTRB(10.0, 10.0, 5.0, 10.0),
               child: Container(
                 color: Colors.amber[50],
-                child: AnswersLayout(
-                  myCallback: whatToDo,
+                child: AnswersWidget(
+                  onTapAnswer: onTapAnswerFunction,
                   data: answers,
                 ),
               ),
@@ -91,10 +88,11 @@ class _QuizMainPageState extends State<QuizMainPage> {
                 color: Colors.amber[100],
                 child: noQuestion
                     ? const QuestionEmpty()
-                    : QuestionLayout(
+                    : QuestionWidget(
                         index: index,
                         question: q.single,
-                        myCallback: answerLayout),
+                        onPressedBtnAnswer: onPressedBtnAnswerFunction,
+                      ),
               ),
             ),
           ),
